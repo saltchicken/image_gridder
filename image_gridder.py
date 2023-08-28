@@ -45,5 +45,6 @@ def grid_joiner(image_directory):
     # Save the combined image
     combined_image.save('combined_grid.png')
 
+
 # grid_joiner('tmp/')
 # grid_splitter('test.png')
