@@ -1,7 +1,7 @@
 from PIL import Image
 import os
 
-def grid_splitter(image_path):
+def grid_splitter(image_path, output_path, filenames=None):
     image = Image.open(image_path)
 
     # Get the dimensions of the image
@@ -14,14 +14,20 @@ def grid_splitter(image_path):
     bottom_right = image.crop((width // 2, height // 2, width, height))
 
     # Save the quarters as separate image files
-    top_left.save('0001.png')
-    top_right.save('0002.png')
-    bottom_left.save('0003.png')
-    bottom_right.save('0004.png')
+    if not filenames:
+        top_left.save(output_path + '/' + '0001.png')
+        top_right.save(output_path + '/' + '0002.png')
+        bottom_left.save(output_path + '/' + '0003.png')
+        bottom_right.save(output_path + '/' + '0004.png')
+    else:
+        top_left.save(output_path + '/' + filenames[0] + '.png')
+        top_right.save(output_path + '/' + filenames[1] + '.png')
+        bottom_left.save(output_path + '/' + filenames[2] + '.png')
+        bottom_right.save(output_path + '/' + filenames[3] + '.png')
 
 
 
-def grid_joiner(image_directory):
+def grid_joiner(image_directory, output_directory=''):
     
     # List the image files in the directory
     image_files = [f for f in os.listdir(image_directory) if f.endswith('.png')]
@@ -43,7 +49,7 @@ def grid_joiner(image_directory):
         combined_image.paste(img, (col * image_width, row * image_height))
 
     # Save the combined image
-    combined_image.save('combined_grid.png')
+    combined_image.save(output_directory + 'combined_grid.png')
 
 
 # grid_joiner('tmp/')
