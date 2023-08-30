@@ -20,10 +20,10 @@ def grid_splitter(image_path, output_path, filenames=None):
         bottom_left.save(output_path + '/' + '0003.png')
         bottom_right.save(output_path + '/' + '0004.png')
     else:
-        top_left.save(output_path + '/' + filenames[0] + '.png')
-        top_right.save(output_path + '/' + filenames[1] + '.png')
-        bottom_left.save(output_path + '/' + filenames[2] + '.png')
-        bottom_right.save(output_path + '/' + filenames[3] + '.png')
+        top_left.save(output_path + '/' + filenames[0])
+        top_right.save(output_path + '/' + filenames[1])
+        bottom_left.save(output_path + '/' + filenames[2])
+        bottom_right.save(output_path + '/' + filenames[3])
 
 
 
